@@ -19,7 +19,7 @@ function refresh() {
 
 function refreshView(data) {
     if (data) {
-        fpsUtil.refreshFps(data.currentFps, data.systemFps)
+        fpsUtil.refreshFps(Math.round(data.currentFps), Math.round(data.systemFps))
     } else {
         $("#fps_status").text("**/**");
     }
