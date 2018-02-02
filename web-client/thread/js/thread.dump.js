@@ -11,7 +11,7 @@ $(document).ready(function () {
     $.fn.dataTable.ext.errMode = 'none';
     var threadTableSelector = $('#thread_table');
     threadTableSelector.DataTable({
-        "ajax": "/thread",
+        "ajax": "http://localhost:5390/thread",
         "paging": false,
         "bSort": false,
         // "scrollY": "400px",

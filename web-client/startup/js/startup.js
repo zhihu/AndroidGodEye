@@ -27,5 +27,6 @@ function refreshView(startupInfo) {
         startupType = "**";
         startupTime = "**";
     }
-    $("#startup_detail").html("Startup Type(启动类型)&nbsp;&nbsp;" + startupType + "&nbsp;,&nbsp;Cost(耗费)&nbsp;&nbsp;" + startupTime + "&nbsp;ms");
+    $("#startup_type").html("启动类型：" + startupType);
+    $("#startup_cost").html("耗费时长：" + startupTime + "&nbsp;ms");
 }

@@ -2,3 +2,8 @@
     _height: 200px;
     min-height: 200px;
 }
+
+.panel-body {
+    max-height: 450px;
+    overflow-y: scroll;
+}
