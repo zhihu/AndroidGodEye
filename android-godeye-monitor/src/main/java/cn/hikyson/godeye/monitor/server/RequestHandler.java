@@ -46,6 +46,7 @@ public class RequestHandler {
             output.println("HTTP/1.0 200 OK");
             output.println("Content-Type: " + prepareMimeType(uri.getPath()));
             output.println("Content-Length: " + bytes.length);
+            output.println("Access-Control-Allow-Origin: *");
             output.println();
             output.write(bytes);
             output.flush();
