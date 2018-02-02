@@ -11,7 +11,7 @@ $(document).ready(function () {
     $.fn.dataTable.ext.errMode = 'none';
     var leakMemoryTableSelector = $('#leak_table');
     leakMemoryTableSelector.DataTable({
-        "ajax": "/leakMemory",
+        "ajax": "http://localhost:5390/leakMemory",
         "paging": false,
         "bSort": false,
         // "scrollY": "400px",
