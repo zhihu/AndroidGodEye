@@ -20,8 +20,8 @@ public class AppInfoModule extends BaseModule<AppInfoModule.AppInfo> {
     }
 
     public static class AppInfo {
-        public String appName;
-        public List<String> extentions;
+        public String packageName;
+        public List<List<String>> extentions;
 
         public AppInfo() {
             if (sAppInfoConext == null) {
@@ -29,11 +29,14 @@ public class AppInfoModule extends BaseModule<AppInfoModule.AppInfo> {
             }
             Context context = sAppInfoConext.getContext();
             PackageManager pm = context.getPackageManager();
-            this.appName = context.getApplicationInfo().loadLabel(pm).toString();
+            this.packageName = context.getApplicationInfo().packageName;
             this.extentions = new ArrayList<>();
             if (sAppInfoConext.getAppInfo() != null && !sAppInfoConext.getAppInfo().isEmpty()) {
                 for (Map.Entry<String, Object> entry : sAppInfoConext.getAppInfo().entrySet()) {
-                    this.extentions.add(entry.getKey() + " : " + entry.getValue());
+                    List<String> kv = new ArrayList<>();
+                    kv.add(entry.getKey());
+                    kv.add(entry.getValue().toString());
+                    this.extentions.add(kv);
                 }
             }
         }

@@ -29,10 +29,6 @@ public class AppInfoProxyImpl implements GodEyeMonitor.AppInfoConext {
         map.put("VersionName", BuildConfig.VERSION_NAME);
         map.put("VersionCode", BuildConfig.VERSION_CODE);
         map.put("BuildType", BuildConfig.BUILD_TYPE);
-        map.put("Debuggable", BuildConfig.DEBUG);
-        map.put("Email", "kysonchao@gmail.com");
-        map.put("ProjectUrl", "https://github.com/Kyson/AndroidGodEye");
-        map.put("Blog", "tech.hikyson.cn");
         return map;
     }
 }
