@@ -6,7 +6,7 @@ var requestUtil = function () {
 
     function getData(path, callbackSuccess, callbackFail) {
         $.ajax({
-            url: "http://localhost:5390" + path,
+            url: requestHost + path,
             success: function (result) {
                 result = JSON.parse(result);
                 if (result.code === 1) {
