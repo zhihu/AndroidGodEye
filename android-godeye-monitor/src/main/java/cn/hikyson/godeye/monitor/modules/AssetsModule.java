@@ -23,7 +23,7 @@ public class AssetsModule implements Module {
 
     @Override
     public byte[] process(String path, Uri uri) throws Throwable {
-        String fileName = mPreffix + "/" + uri.getPath();
+        String fileName = mPreffix == null ? uri.getPath() : mPreffix + "/" + uri.getPath();
         return loadContent(fileName, mAssets);
     }
 

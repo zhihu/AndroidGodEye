@@ -44,7 +44,7 @@ public class Router {
 
     public void init(Context context) {
         mRouteModules = new ArrayMap<>();
-        AssetsModule assetsModule = new AssetsModule(context, "androidgodeye");
+        AssetsModule assetsModule = new AssetsModule(context, null);
         mRouteModules.put("assets", assetsModule);
         AppInfoModule appInfoModule = new AppInfoModule();
         mRouteModules.put("appinfo", appInfoModule);
