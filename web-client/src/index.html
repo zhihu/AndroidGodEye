@@ -62,52 +62,53 @@
         </div>
 
 
-        <!-- CPU Usage -->
         <div class="row-fluid">
-          <div class="span6">
+          <!-- CPU Usage -->
+          <div class="span4">
             <div class="widget-box">
               <div class="widget-title">
                 <h5>CPU Usage Chart</h5>
+                <a href="#" id="cpu-csv">
+                  <span class="label label-info">CSV</span>
+                </a>
               </div>
               <div class="widget-content">
                 <div id="cpu-chart"></div>
               </div>
             </div>
           </div>
-          <div class="span6">
-            <div class="widget-box">
-              <div class="widget-title">
-                <h5>CPU Usage CSV Output</h5>
-              </div>
-              <div class="widget-content">
-                <textarea class="span12" id="cpu-cvs"></textarea>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Mem Usage -->
-        <div class="row-fluid">
-          <div class="span6">
+          <!-- Mem Usage -->
+          <div class="span4">
             <div class="widget-box">
               <div class="widget-title">
                 <h5>Mem Usage Chart</h5>
+                <a href="#" id="mem-csv">
+                    <span class="label label-info">CSV</span>
+                  </a>
               </div>
               <div class="widget-content">
                 <div id="mem-chart"></div>
               </div>
             </div>
           </div>
-          <div class="span6">
+
+
+          <!-- FPS -->
+          <div class="span4">
             <div class="widget-box">
               <div class="widget-title">
-                <h5>Mem Usage CSV Output</h5>
+                <h5>FPS Chart</h5>
+                <a href="#" id="fps-csv">
+                    <span class="label label-info">CSV</span>
+                  </a>
               </div>
               <div class="widget-content">
-                <textarea class="span12" id="mem-cvs"></textarea>
+                <div id="fps-chart"></div>
               </div>
             </div>
           </div>
+
         </div>
 
         <!-- Crash Log -->
@@ -145,10 +146,12 @@
   <script src="js/jquery.flot.resize.min.js"></script>
   <script src="js/dateformat-min.js"></script>
   <script src="js/requests.js"></script>
-  
+  <script src="js/csv.js"></script>
+
   <script src="js/appinfo.js"></script>
   <script src="js/cpu.js"></script>
   <script src="js/mem.js"></script>
+  <script src="js/fps.js"></script>
   <script src="js/crashlog.js"></script>
 
 </body>

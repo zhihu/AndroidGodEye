@@ -12,35 +12,34 @@ $(function () {
     // setup plot
     var options = {
         series: { shadowSize: 0 },
-        yaxis: { min: 0, max: 100, tickFormatter: function(v, axis) { return v + "MB"; } },
+        yaxis: { min: 0, max: 60, tickFormatter: function(v, axis) { return v + "FPS"; } },
         xaxis: { show: false }
     };
-    var plot = $.plot($("#mem-chart"), [res], options);
+    var plot = $.plot($("#fps-chart"), [res], options);
 
     function updateChart(options) {
         if (options) {
-            plot = $.plot($("#mem-chart"), [res], options)
+            plot = $.plot($("#fps-chart"), [res], options)
         } else {
             plot.setData([res]);
             plot.draw();
         }
     }
 
-    function fetchMemData() {
-        requestUtil.getData("/pss", function (pssInfo) {
-            if (!pssInfo) {
-                setTimeout(fetchMemData, updateInterval);
+    function fetchFpsData() {
+        requestUtil.getData("/fps", function (fpsInfo) {
+            if (!fpsInfo) {
+                setTimeout(fetchFpsData, updateInterval);
                 return;
             }
 
             var updateOptions = false;
-            var y = Number((pssInfo.totalPssKb / 1024).toFixed(2));
-            if (y >= options.yaxis.max) {
+            var y = Number(Math.round(fpsInfo.currentFps).toFixed(0));
+            if (y > options.yaxis.max) {
                 options.yaxis.max = y * 1.3;
                 updateOptions = true;
             }
             data.push(y);
-            // $("#mem-cvs").append(y + ", ")
 
             if (data.length > totalPoints) {
                 data = data.slice(data.length - totalPoints);
@@ -52,16 +51,16 @@ $(function () {
             }
 
             updateChart(updateOptions ? options : null);
-            setTimeout(fetchMemData, updateInterval);
+            setTimeout(fetchFpsData, updateInterval);
 
         }, function () {
-            setTimeout(fetchMemData, updateInterval);
+            setTimeout(fetchFpsData, updateInterval);
         });
     }
     
-    fetchMemData();
+    fetchFpsData();
 
-    $("#mem-csv").click(function() {
-        saveCsv(this, data, "mem");
+    $("#fps-csv").click(function() {
+        saveCsv(this, data, "fps");
     });
 });

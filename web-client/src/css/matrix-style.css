@@ -495,7 +495,7 @@ hr{ border-top-color:#dadada;}
 	width:100%; float:left;
 }
 /* Charts & graphs **/
-#cpu-chart, #cpu-cvs, #mem-chart, #mem-cvs { 
+#cpu-chart, #mem-chart, #fps-chart { 
 	height: 300px;
 	max-width: 100%;
 	margin-bottom: 0;

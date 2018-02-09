@@ -1,5 +1,5 @@
 $(function () {
-    var data = [], res = [], totalPoints = 100;
+    var data = [], res = [], totalPoints = 200;
     var updateInterval = 2000;
 
     for (var i = 0; i < totalPoints; i ++) {
@@ -44,7 +44,7 @@ $(function () {
                 }
                 
                 data.push(y);
-                $("#cpu-cvs").append(cpuInfo.appCpuRatio + ", ")
+                // $("#cpu-cvs").append(cpuInfo.appCpuRatio + ", ")
             }
             if (data.length > totalPoints) {
                 data = data.slice(data.length - totalPoints);
@@ -64,4 +64,8 @@ $(function () {
     }
     
     fetchCpuData();
+
+    $("#cpu-csv").click(function() {
+        saveCsv(this, data, "cpu");
+    });
 });
