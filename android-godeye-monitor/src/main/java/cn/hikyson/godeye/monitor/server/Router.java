@@ -15,7 +15,6 @@ import cn.hikyson.godeye.monitor.modules.CpuModule;
 import cn.hikyson.godeye.monitor.modules.CrashModule;
 import cn.hikyson.godeye.monitor.modules.FpsModule;
 import cn.hikyson.godeye.monitor.modules.HeapModule;
-import cn.hikyson.godeye.monitor.modules.LeakMemoryModule;
 import cn.hikyson.godeye.monitor.modules.Module;
 import cn.hikyson.godeye.monitor.modules.NetworkModule;
 import cn.hikyson.godeye.monitor.modules.PageloadModule;
@@ -58,8 +57,6 @@ public class Router {
         mRouteModules.put("fps", fpsModule);
         HeapModule heapModule = new HeapModule();
         mRouteModules.put("heap", heapModule);
-        LeakMemoryModule LeakMemoryModule = new LeakMemoryModule();
-        mRouteModules.put("leakMemory", LeakMemoryModule);
         NetworkModule networkModule = new NetworkModule();
         mRouteModules.put("network", networkModule);
         PssModule pssModule = new PssModule();

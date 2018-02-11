@@ -26,7 +26,6 @@ import cn.hikyson.godeye.core.GodEye;
 import cn.hikyson.godeye.core.internal.modules.battery.BatteryInfo;
 import cn.hikyson.godeye.core.internal.modules.crash.CrashInfo;
 import cn.hikyson.godeye.core.internal.modules.fps.FpsInfo;
-import cn.hikyson.godeye.core.internal.modules.leakdetector.LeakQueue;
 import cn.hikyson.godeye.core.internal.modules.memory.HeapInfo;
 import cn.hikyson.godeye.core.internal.modules.memory.PssInfo;
 import cn.hikyson.godeye.core.internal.modules.memory.RamInfo;
@@ -210,7 +209,6 @@ public class MainActivity extends Activity implements Loggable {
                 mCompositeDisposable.add(GodEye.instance().fps().subject().subscribe(new LogObserver<FpsInfo>("fps", this)));
                 break;
             case R.id.activity_main_consumer_leak:
-                mCompositeDisposable.add(GodEye.instance().leakDetector().subject().subscribe(new LogObserver<LeakQueue.LeakMemoryInfo>("leak", this)));
                 break;
             case R.id.activity_main_consumer_heap:
                 mCompositeDisposable.add(GodEye.instance().heap().subject().subscribe(new LogObserver<HeapInfo>("heap", this)));
@@ -349,7 +347,6 @@ public class MainActivity extends Activity implements Loggable {
             GodEye.instance().fps().install(this);
         }
         if (mActivityMainLeak.isChecked()) {
-            GodEye.instance().leakDetector().install(getApplication());
         }
         if (mActivityMainHeap.isChecked()) {
             GodEye.instance().heap().install();
@@ -391,7 +388,6 @@ public class MainActivity extends Activity implements Loggable {
             GodEye.instance().fps().uninstall();
         }
         if (mActivityMainLeak.isChecked()) {
-            GodEye.instance().leakDetector().uninstall();
         }
         if (mActivityMainHeap.isChecked()) {
             GodEye.instance().heap().uninstall();

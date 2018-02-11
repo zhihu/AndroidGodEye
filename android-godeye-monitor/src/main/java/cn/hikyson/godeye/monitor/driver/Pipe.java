@@ -9,7 +9,6 @@ import cn.hikyson.godeye.core.internal.modules.battery.BatteryInfo;
 import cn.hikyson.godeye.core.internal.modules.cpu.CpuInfo;
 import cn.hikyson.godeye.core.internal.modules.crash.CrashInfo;
 import cn.hikyson.godeye.core.internal.modules.fps.FpsInfo;
-import cn.hikyson.godeye.core.internal.modules.leakdetector.LeakQueue;
 import cn.hikyson.godeye.core.internal.modules.memory.HeapInfo;
 import cn.hikyson.godeye.core.internal.modules.memory.PssInfo;
 import cn.hikyson.godeye.core.internal.modules.memory.RamInfo;
@@ -89,23 +88,6 @@ public class Pipe {
 
     public FpsInfo popFpsInfo() {
         return mFpsInfo;
-    }
-
-
-    private LinkedHashSet<LeakQueue.LeakMemoryInfo> mLeakMemoryInfos = new LinkedHashSet<>();
-    private final Object mLockForLeak = new Object();
-
-    public void pushLeakMemoryInfos(LeakQueue.LeakMemoryInfo leakMemoryInfo) {
-        synchronized (mLockForLeak) {
-            mLeakMemoryInfos.remove(leakMemoryInfo);
-            mLeakMemoryInfos.add(leakMemoryInfo);
-        }
-    }
-
-    public Collection<LeakQueue.LeakMemoryInfo> popLeakMemoryInfos() {
-        synchronized (mLockForLeak) {
-            return cloneList(mLeakMemoryInfos);
-        }
     }
 
     private List<BlockInfo> mBlockInfos = new ArrayList<>();

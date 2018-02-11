@@ -9,7 +9,6 @@ import cn.hikyson.godeye.core.internal.modules.cpu.Cpu;
 import cn.hikyson.godeye.core.internal.modules.crash.Crash;
 import cn.hikyson.godeye.core.internal.modules.crash.CrashProvider;
 import cn.hikyson.godeye.core.internal.modules.fps.Fps;
-import cn.hikyson.godeye.core.internal.modules.leakdetector.LeakDetector;
 import cn.hikyson.godeye.core.internal.modules.memory.Heap;
 import cn.hikyson.godeye.core.internal.modules.memory.Pss;
 import cn.hikyson.godeye.core.internal.modules.memory.Ram;
@@ -32,7 +31,6 @@ public class GodEye {
     private Cpu mCpu;
     private Battery mBattery;
     private Fps mFps;
-    private LeakDetector mLeakDetector;
     private Heap mHeap;
     private Pss mPss;
     private Ram mRam;
@@ -65,7 +63,6 @@ public class GodEye {
         cpu().install();
         battery().install(context);
         fps().install(context);
-        leakDetector().install(c);
         heap().install();
         pss().install(context);
         ram().install(context);
@@ -116,13 +113,6 @@ public class GodEye {
             mFps = new Fps();
         }
         return mFps;
-    }
-
-    public LeakDetector leakDetector() {
-        if (mLeakDetector == null) {
-            mLeakDetector = LeakDetector.instance();
-        }
-        return mLeakDetector;
     }
 
     public Heap heap() {

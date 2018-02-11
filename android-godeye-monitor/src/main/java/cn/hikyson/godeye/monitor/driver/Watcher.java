@@ -10,7 +10,6 @@ import cn.hikyson.godeye.core.internal.modules.battery.BatteryInfo;
 import cn.hikyson.godeye.core.internal.modules.cpu.CpuInfo;
 import cn.hikyson.godeye.core.internal.modules.crash.CrashInfo;
 import cn.hikyson.godeye.core.internal.modules.fps.FpsInfo;
-import cn.hikyson.godeye.core.internal.modules.leakdetector.LeakQueue;
 import cn.hikyson.godeye.core.internal.modules.memory.HeapInfo;
 import cn.hikyson.godeye.core.internal.modules.memory.PssInfo;
 import cn.hikyson.godeye.core.internal.modules.memory.RamInfo;
@@ -64,12 +63,6 @@ public class Watcher {
             @Override
             public void accept(FpsInfo fpsInfo) throws Exception {
                 mPipe.pushFpsInfo(fpsInfo);
-            }
-        }));
-        mCompositeDisposable.add(godEye.leakDetector().subject().subscribe(new Consumer<LeakQueue.LeakMemoryInfo>() {
-            @Override
-            public void accept(LeakQueue.LeakMemoryInfo leakMemoryInfo) throws Exception {
-                mPipe.pushLeakMemoryInfos(leakMemoryInfo);
             }
         }));
         mCompositeDisposable.add(godEye.sm().subject().subscribe(new Consumer<BlockInfo>() {
