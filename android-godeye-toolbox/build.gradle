@@ -32,7 +32,3 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.0'
     implementation project(':android-godeye')
 }
-
-
-apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
-apply from: rootProject.file('gradle/jitpack.gradle')
