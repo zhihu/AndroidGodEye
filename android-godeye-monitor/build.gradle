@@ -6,11 +6,6 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -26,9 +21,14 @@ android {
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    implementation 'com.android.support:support-v4:26.1.0'
-    implementation 'com.google.code.gson:gson:2.8.0'
-    implementation project(':android-godeye')
+    provided 'com.android.support:support-v4:26.1.0'
+    provided 'com.google.code.gson:gson:2.8.0'
+    provided project(':android-godeye')
+}
+
+archivesBaseName='godeye-monitor'
+version="1.1"
+def uploadScript = rootProject.file('gradle/zhihu_upload_archives.gradle')
+if (uploadScript.exists()) {
+    apply from: uploadScript
 }
