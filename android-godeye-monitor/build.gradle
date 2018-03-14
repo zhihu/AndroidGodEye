@@ -27,7 +27,7 @@ dependencies {
 }
 
 archivesBaseName='godeye-monitor'
-version="1.1"
+version="1.2"
 def uploadScript = rootProject.file('gradle/zhihu_upload_archives.gradle')
 if (uploadScript.exists()) {
     apply from: uploadScript
