@@ -1,7 +1,7 @@
 function saveCsv(dom, data, fileNamePrefix) {
     var text = "";
     for(var i = data.length - 1; i >= 0; i --) {
-        text += (data[i]).toFixed(2) + ", ";
+        text += (data[i]).toFixed(2) + "\n";
     }
     if (text.length > 0) {
         text = text.slice(0, text.length - 2);
